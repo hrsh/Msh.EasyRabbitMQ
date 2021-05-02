@@ -1,18 +1,27 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageId>EasyRabbitMQ</PackageId>
-    <Version>0.0.1</Version>
-    <Authors>Mazdak Shojaie</Authors>
-    <Product>Msh.EasyRabbitMQ</Product>
-    <Description>a fast and lightweight library to work with RabbitMQ</Description>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/hrsh/Msh.EasyRabbitMQ</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/hrsh/Msh.EasyRabbitMQ</RepositoryUrl>
-    <PackageTags>asp.net rabbitmq messaging</PackageTags>
-  </PropertyGroup>
-
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<PackageId>EasyRabbitMQ</PackageId>
+		<Version>0.0.1</Version>
+		<Authors>Mazdak Shojaie</Authors>
+		<Product>Msh.EasyRabbitMQ</Product>
+		<Description>a fast and lightweight library to work with RabbitMQ</Description>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/hrsh/Msh.EasyRabbitMQ</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/hrsh/Msh.EasyRabbitMQ</RepositoryUrl>
+		<PackageTags>asp.net rabbitmq messaging</PackageTags>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.7" />
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="5.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="Polly" Version="7.2.2" />
+		<PackageReference Include="RabbitMQ.Client" Version="6.2.1" />
+	</ItemGroup>
 </Project>
