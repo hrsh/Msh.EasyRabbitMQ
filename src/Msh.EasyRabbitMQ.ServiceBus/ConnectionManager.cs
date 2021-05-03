@@ -7,6 +7,7 @@ using RabbitMQ.Client.Exceptions;
 using System;
 using System.Net.Sockets;
 
+//https://github.com/dotnet-architecture/eShopOnContainers/blob/dev/src/BuildingBlocks/EventBus/EventBusRabbitMQ/EventBusRabbitMQ.cs
 namespace Msh.EasyRabbitMQ.ServiceBus
 {
     public class ConnectionManager : IConnectionManager
