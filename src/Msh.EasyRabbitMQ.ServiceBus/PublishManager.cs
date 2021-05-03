@@ -53,28 +53,8 @@ namespace Msh.EasyRabbitMQ.ServiceBus
             string queue = null,
             Dictionary<string, object> arguments = null)
         {
-            _connectionManager.TryConnect();
-
-            var channel = _connectionManager.Channel;
-
-            channel.QueueDeclare(
-                queue: queue ?? _options.PublishOptions.Queue,
-                    durable: _options.Durable,
-                    exclusive: _options.Exclusive,
-                    autoDelete: false,
-                    arguments: arguments);
-
             var message = JsonConvert.SerializeObject(source);
-            var body = Encoding.UTF8.GetBytes(message);
-
-            var basicProperties = channel.CreateBasicProperties();
-            basicProperties.Persistent = _options.PublishOptions.Persistent;
-
-            channel.BasicPublish(
-                exchange: "",
-                routingKey: queue ?? _options.PublishOptions.Queue,
-                basicProperties: basicProperties,
-                body: body);
+            PublishUsingQueue(message, queue, arguments);
         }
 
         public void PublishUsingTaskQueue(
@@ -110,28 +90,8 @@ namespace Msh.EasyRabbitMQ.ServiceBus
             string queue = null,
             Dictionary<string, object> arguments = null)
         {
-            _connectionManager.TryConnect();
-
-            var channel = _connectionManager.Channel;
-
-            channel.QueueDeclare(
-                queue: queue ?? _options.PublishOptions.Queue,
-                durable: _options.Durable,
-                exclusive: _options.Exclusive,
-                autoDelete: false,
-                arguments: arguments);
-
             var message = JsonConvert.SerializeObject(source);
-            var body = Encoding.UTF8.GetBytes(message);
-
-            var properties = channel.CreateBasicProperties();
-            properties.Persistent = _options.PublishOptions.Persistent;
-
-            channel.BasicPublish(
-                exchange: "",
-                routingKey: queue ?? _options.PublishOptions.Queue,
-                basicProperties: properties,
-                body: body);
+            PublishUsingTaskQueue(message, queue, arguments);
         }
 
         public void PublishUsingExchange(
@@ -172,29 +132,8 @@ namespace Msh.EasyRabbitMQ.ServiceBus
             string exchangeType = null,
             IDictionary<string, object> arguments = null)
         {
-            _connectionManager.TryConnect();
-
-            var channel = _connectionManager.Channel;
-
-            channel.ExchangeDeclare(
-                exchange: exchange ?? _options.PublishOptions.Exchange,
-                type: ExchangeType.Topic ?? _options.PublishOptions.ExchangeType,
-                arguments: arguments);
-
             var message = JsonConvert.SerializeObject(source);
-            var body = Encoding.UTF8.GetBytes(message);
-
-            var basicProperties = channel.CreateBasicProperties();
-            basicProperties.Persistent = _options.PublishOptions.Persistent;
-
-            channel.BasicPublish(
-                exchange: exchange ?? _options.PublishOptions.Exchange,
-                routingKey: routingKey ?? _options.PublishOptions.RoutingKey,
-                basicProperties: basicProperties,
-                body: body);
-#if DEBUG
-            Console.WriteLine("Sent {0}", message);
-#endif
+            PublishUsingExchange(message, exchange, routingKey, exchangeType, arguments);
         }
 
         public void PublishUsingExchange(
@@ -232,30 +171,8 @@ namespace Msh.EasyRabbitMQ.ServiceBus
             Action<PublishOptions> options,
             IDictionary<string, object> arguments = null)
         {
-            PublishOptions publishOptions = new();
-            options.Invoke(publishOptions);
-
-            var channel = _connectionManager.Channel;
-
-            channel.ExchangeDeclare(
-                exchange: publishOptions.Exchange,
-                type: publishOptions.ExchangeType,
-                arguments: arguments);
-
             var message = JsonConvert.SerializeObject(source);
-            var body = Encoding.UTF8.GetBytes(message);
-
-            var basicProperties = channel.CreateBasicProperties();
-            basicProperties.Persistent = publishOptions.Persistent;
-
-            channel.BasicPublish(
-                exchange: publishOptions.Exchange,
-                routingKey: publishOptions.RoutingKey,
-                basicProperties: basicProperties,
-                body: body);
-#if DEBUG
-            Console.WriteLine("Sent {0}", message);
-#endif
+            PublishUsingExchange(message, options, arguments);
         }
     }
 }
