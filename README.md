@@ -54,6 +54,7 @@ In `appsettings.json`
 ```
 
 Publish a message:
+
 ```csharp
 private readonly IPublishManager _publishManager;
 
@@ -74,7 +75,9 @@ public IActionResult PublishAction()
 ```
 
 Subscribe to bus:
+
 1. In `Startup.cs`
+
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
@@ -84,6 +87,7 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 2. `TaskRunner.cs`
+
 ```csharp
 public class TaskRunner : IHostedService
 {
@@ -101,17 +105,17 @@ public class TaskRunner : IHostedService
         // queue or exchange name must match the smae as 
         // publisher
         _subscribeManager.SubscribeUsingQueue();
-		
-		// with callback function
-		_subscribeManager.SubscribeUsingQueue(Process);
-		
+
+    // with callback function
+    _subscribeManager.SubscribeUsingQueue(Process);
+
         return Task.CompletedTask;
     }
-	
-	Task<bool> Process(string source)
-	{
-		// do your work
-	}
+
+    Task<bool> Process(string source)
+    {
+	    // do your work
+    }
 
     public Task StopAsync(CancellationToken cancellationToken)
     {
