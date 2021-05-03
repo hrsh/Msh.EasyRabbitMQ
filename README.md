@@ -106,15 +106,15 @@ public class TaskRunner : IHostedService
         // publisher
         _subscribeManager.SubscribeUsingQueue();
 
-    // with callback function
-    _subscribeManager.SubscribeUsingQueue(Process);
+        // with callback function
+        _subscribeManager.SubscribeUsingQueue(Process);
 
         return Task.CompletedTask;
     }
 
     Task<bool> Process(string source)
     {
-	    // do your work
+        // do your work
     }
 
     public Task StopAsync(CancellationToken cancellationToken)
