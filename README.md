@@ -63,13 +63,22 @@ public SendController(IPublishManager publishManager)
     _publishManager = publishManager;
 }
 ...
-public IActionResult PublishAction()
+public IActionResult PublishAction(string message)
 {
     _publishManager.PublishUsingQueue(
     /*
         if queue name is null, EasyRabbitMQ uses value in appsettings.json
     */
     );
+    
+    // or use extension methods
+    _publishManager
+        .WithExchange("exchange_name")
+        .WithRoute("my_route_key")
+        .WithMessage(message)
+        .Topic() // other options: Direct(), Fanout()
+        .Publish();
+    
     return Ok();
 }
 ```
