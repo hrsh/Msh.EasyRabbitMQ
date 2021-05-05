@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<PackageId>EasyRabbitMQ.Extensions</PackageId>
+		<Version>0.0.3</Version>
+		<Authors>Mazdak Shojaie</Authors>
+		<Product>Msh.EasyRabbitMQ.Extensions</Product>
+		<Description>a fast and lightweight library to work with RabbitMQ</Description>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/hrsh/Msh.EasyRabbitMQ</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/hrsh/Msh.EasyRabbitMQ</RepositoryUrl>
+		<PackageTags>asp.net rabbitmq messaging</PackageTags>
+	</PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Msh.EasyRabbitMQ.ServiceBus\Msh.EasyRabbitMQ.ServiceBus.csproj" />
+  </ItemGroup>
+
+</Project>

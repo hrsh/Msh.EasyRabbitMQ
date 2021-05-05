@@ -12,6 +12,7 @@
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
 	</ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Msh.EasyRabbitMQ.Extensions\Msh.EasyRabbitMQ.Extensions.csproj" />
     <ProjectReference Include="..\Msh.EasyRabbitMQ.ServiceBus\Msh.EasyRabbitMQ.ServiceBus.csproj" />
     <ProjectReference Include="..\SharedLib\SharedLib.csproj" />
   </ItemGroup>

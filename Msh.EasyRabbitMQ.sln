@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReceiveApp", "src\ReceiveAp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedLib", "src\SharedLib\SharedLib.csproj", "{A60080B8-329C-456D-A642-E3B1BFD28928}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Msh.EasyRabbitMQ.Extensions", "src\Msh.EasyRabbitMQ.Extensions\Msh.EasyRabbitMQ.Extensions.csproj", "{53D26DAD-3000-40AC-883E-D36655DE1FA3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,18 @@ Global
 		{A60080B8-329C-456D-A642-E3B1BFD28928}.Release|x64.Build.0 = Release|Any CPU
 		{A60080B8-329C-456D-A642-E3B1BFD28928}.Release|x86.ActiveCfg = Release|Any CPU
 		{A60080B8-329C-456D-A642-E3B1BFD28928}.Release|x86.Build.0 = Release|Any CPU
+		{53D26DAD-3000-40AC-883E-D36655DE1FA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53D26DAD-3000-40AC-883E-D36655DE1FA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53D26DAD-3000-40AC-883E-D36655DE1FA3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{53D26DAD-3000-40AC-883E-D36655DE1FA3}.Debug|x64.Build.0 = Debug|Any CPU
+		{53D26DAD-3000-40AC-883E-D36655DE1FA3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{53D26DAD-3000-40AC-883E-D36655DE1FA3}.Debug|x86.Build.0 = Debug|Any CPU
+		{53D26DAD-3000-40AC-883E-D36655DE1FA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53D26DAD-3000-40AC-883E-D36655DE1FA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53D26DAD-3000-40AC-883E-D36655DE1FA3}.Release|x64.ActiveCfg = Release|Any CPU
+		{53D26DAD-3000-40AC-883E-D36655DE1FA3}.Release|x64.Build.0 = Release|Any CPU
+		{53D26DAD-3000-40AC-883E-D36655DE1FA3}.Release|x86.ActiveCfg = Release|Any CPU
+		{53D26DAD-3000-40AC-883E-D36655DE1FA3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +94,7 @@ Global
 		{60FF48DD-80BF-4496-8F07-AF0079A90EBE} = {CE430C2F-EA3C-474B-8A22-CDF4416BC5FC}
 		{62EF221B-73E1-490A-8141-429A93CB4C31} = {CE430C2F-EA3C-474B-8A22-CDF4416BC5FC}
 		{A60080B8-329C-456D-A642-E3B1BFD28928} = {CE430C2F-EA3C-474B-8A22-CDF4416BC5FC}
+		{53D26DAD-3000-40AC-883E-D36655DE1FA3} = {CE430C2F-EA3C-474B-8A22-CDF4416BC5FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {02409BA3-9AC3-4EE7-A033-9B21E66B5818}

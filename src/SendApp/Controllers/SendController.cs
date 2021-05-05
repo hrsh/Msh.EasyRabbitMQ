@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Msh.EasyRabbitMQ.Extensions;
 using Msh.EasyRabbitMQ.ServiceBus;
 
 namespace SendApp.Controllers
@@ -18,14 +19,32 @@ namespace SendApp.Controllers
         {
             //_publishManager.PublishUsingQueue(message, Consts.QueueName);
 
-            _publishManager.PublishUsingExchange(
-                message,
-                exchange: "my_exchange",
-                routingKey: "my_key",
-                exchangeType: "topic",
-                arguments: null);
+            //_publishManager.PublishUsingExchange(
+            //    message,
+            //    exchange: "my_exchange",
+            //    routingKey: "my_key",
+            //    exchangeType: "topic",
+            //    arguments: null);
 
-            _publishManager.PublishUsingQueue<T>()
+            _publishManager
+                .WithQueue("queue_name")
+                .WithMessage(message)
+                .Publish();
+
+
+            _publishManager
+                .WithExchange("fluent_exchange_name")
+                .WithRoute("fluent_routing_key")
+                .WithMessage("fluent_message")
+                .Topic()
+                .Publish();
+
+            _publishManager
+                .WithExchange("")
+                .WithRoute("")
+                .WithMessage("")
+                .Direct()
+                .Publish();
 
             return Ok();
         }
