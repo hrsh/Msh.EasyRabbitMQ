@@ -6,6 +6,9 @@ Install
 
 `Install-Package EasyRabbitMQ`
 
+Optional package:
+`Install-Package EasyRabbitMQ.Extensions`
+
 Usage:
 
 In `Startup.cs` class:
