@@ -183,7 +183,7 @@ namespace Msh.EasyRabbitMQ.ServiceBus
             string exchange = null,
             string routingKey = null,
             string queue = null,
-            string topic = null,
+            string exchangeType = null,
             Dictionary<string, object> arguments = null)
         {
             _connectionManager.TryConnect();
@@ -192,7 +192,7 @@ namespace Msh.EasyRabbitMQ.ServiceBus
 
             channel.ExchangeDeclare(
                 exchange: exchange ?? _options.SubscribOptions.Exchange,
-                type: ExchangeType.Topic ?? topic);
+                type: ExchangeType.Topic ?? exchangeType);
 
             channel.QueueDeclare(
                 queue ?? _options.SubscribOptions.Queue,
@@ -234,7 +234,7 @@ namespace Msh.EasyRabbitMQ.ServiceBus
             string exchange = null,
             string routingKey = null,
             string queue = null,
-            string topic = null,
+            string exchangeType = null,
             Dictionary<string, object> arguments = null)
         {
             _connectionManager.TryConnect();
@@ -243,7 +243,7 @@ namespace Msh.EasyRabbitMQ.ServiceBus
 
             channel.ExchangeDeclare(
                 exchange: exchange ?? _options.SubscribOptions.Exchange,
-                type: ExchangeType.Topic ?? topic);
+                type: ExchangeType.Topic ?? exchangeType);
 
             channel.QueueDeclare(
                 queue ?? _options.SubscribOptions.Queue,
@@ -289,9 +289,9 @@ namespace Msh.EasyRabbitMQ.ServiceBus
             string exchange = null,
             string routingKey = null,
             string queue = null,
-            string topic = null,
+            string exchangeType = null,
             Dictionary<string, object> arguments = null) =>
-            SubscribeUsingExchange(callback, exchange, routingKey, queue, topic, arguments);
+            SubscribeUsingExchange(callback, exchange, routingKey, queue, exchangeType, arguments);
 
         public void SubscribeUsingExchange(
             Action<SubscribOptions> options,

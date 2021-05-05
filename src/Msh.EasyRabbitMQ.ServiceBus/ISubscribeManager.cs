@@ -38,7 +38,7 @@ namespace Msh.EasyRabbitMQ.ServiceBus
             string exchange = null,
             string routingKey = null,
             string queue = null,
-            string topic = null,
+            string exchangeType = null,
             Dictionary<string, object> arguments = null);
 
         void SubscribeUsingExchange(
@@ -46,7 +46,7 @@ namespace Msh.EasyRabbitMQ.ServiceBus
             string exchange = null,
             string routingKey = null,
             string queue = null,
-            string topic = null,
+            string exchangeType = null,
             Dictionary<string, object> arguments = null);
 
         void SubscribeUsingExchange<T>(
@@ -54,7 +54,7 @@ namespace Msh.EasyRabbitMQ.ServiceBus
             string exchange = null,
             string routingKey = null,
             string queue = null,
-            string topic = null,
+            string exchangeType = null,
             Dictionary<string, object> arguments = null);
 
         void SubscribeUsingExchange(

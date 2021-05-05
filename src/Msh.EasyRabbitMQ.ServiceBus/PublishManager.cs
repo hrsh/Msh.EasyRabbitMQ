@@ -53,7 +53,22 @@ namespace Msh.EasyRabbitMQ.ServiceBus
             string queue = null,
             Dictionary<string, object> arguments = null)
         {
-            var message = JsonConvert.SerializeObject(source);
+            var message = JsonConvert.SerializeObject(source, Formatting.None, new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
+            PublishUsingQueue(message, queue, arguments);
+        }
+
+        public void PublishUsingQueue<T>(
+            T source,
+            JsonSerializerSettings jsonSerializerSettings,
+            string queue = null,
+            Dictionary<string, object> arguments = null)
+        {
+            var message = JsonConvert.SerializeObject(
+                source, Formatting.None, 
+                jsonSerializerSettings);
             PublishUsingQueue(message, queue, arguments);
         }
 

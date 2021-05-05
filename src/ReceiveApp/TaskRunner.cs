@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Msh.EasyRabbitMQ.ServiceBus;
-using Newtonsoft.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -20,29 +19,18 @@ namespace ReceiveApp
         }
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            _logger.LogInformation("Register subscribtion...");
+            //_subscribeManager.SubscribeUsingQueue(Consts.QueueName);
 
-            //_subscribeManager.SubscribeUsingQueue(ProcessMessage<FakeClass> ,queue: Consts.QueueName);
-            //_subscribeManager.SubscribeUsingQueue(queue: Consts.QueueName);
-            //_subscribeManager.SubscribeUsingTaskQueue<FakeClass>(
-            //    ProcessMessage<FakeClass>, Consts.QueueName);
-            _subscribeManager.SubscribeUsingExchange(
-                Consts.ExchangeName,
-                Consts.RoutingKey,
-                Consts.QueueName,
-                "topic",
-                null);
+            _subscribeManager.SubscribeUsingExchange(a =>
+            {
+                a.Exchange = "my_exchange";
+                a.ExchangeType = "topic";
+                a.RoutingKey = "my_key";
+                a.ExchangeType = "topic";
+                a.Queue = "my_queue";
+            });
 
-            _logger.LogInformation("Subscribtion registered.");
             return Task.CompletedTask;
-        }
-
-        Task<bool> ProcessMessage<T>(string source)
-        {
-            var t = JsonConvert.DeserializeObject<T>(source);
-            var u = JsonConvert.SerializeObject(t);
-            _logger.LogInformation(u);
-            return Task.FromResult(true);
         }
 
         public Task StopAsync(CancellationToken cancellationToken)

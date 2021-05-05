@@ -5,13 +5,13 @@ VisualStudioVersion = 16.6.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CE430C2F-EA3C-474B-8A22-CDF4416BC5FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Msh.EasyRabbitMQ.ServiceBus", "src\Msh.EasyRabbitMQ.ServiceBus\Msh.EasyRabbitMQ.ServiceBus.csproj", "{495511B9-F233-4C16-80BA-D267C2FB0BA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Msh.EasyRabbitMQ.ServiceBus", "src\Msh.EasyRabbitMQ.ServiceBus\Msh.EasyRabbitMQ.ServiceBus.csproj", "{495511B9-F233-4C16-80BA-D267C2FB0BA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendApp", "src\SendApp\SendApp.csproj", "{60FF48DD-80BF-4496-8F07-AF0079A90EBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SendApp", "src\SendApp\SendApp.csproj", "{60FF48DD-80BF-4496-8F07-AF0079A90EBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReceiveApp", "src\ReceiveApp\ReceiveApp.csproj", "{62EF221B-73E1-490A-8141-429A93CB4C31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReceiveApp", "src\ReceiveApp\ReceiveApp.csproj", "{62EF221B-73E1-490A-8141-429A93CB4C31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedLib", "src\SharedLib\SharedLib.csproj", "{A60080B8-329C-456D-A642-E3B1BFD28928}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedLib", "src\SharedLib\SharedLib.csproj", "{A60080B8-329C-456D-A642-E3B1BFD28928}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +21,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{495511B9-F233-4C16-80BA-D267C2FB0BA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -75,10 +72,16 @@ Global
 		{A60080B8-329C-456D-A642-E3B1BFD28928}.Release|x86.ActiveCfg = Release|Any CPU
 		{A60080B8-329C-456D-A642-E3B1BFD28928}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{495511B9-F233-4C16-80BA-D267C2FB0BA4} = {CE430C2F-EA3C-474B-8A22-CDF4416BC5FC}
 		{60FF48DD-80BF-4496-8F07-AF0079A90EBE} = {CE430C2F-EA3C-474B-8A22-CDF4416BC5FC}
 		{62EF221B-73E1-490A-8141-429A93CB4C31} = {CE430C2F-EA3C-474B-8A22-CDF4416BC5FC}
 		{A60080B8-329C-456D-A642-E3B1BFD28928} = {CE430C2F-EA3C-474B-8A22-CDF4416BC5FC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {02409BA3-9AC3-4EE7-A033-9B21E66B5818}
 	EndGlobalSection
 EndGlobal
