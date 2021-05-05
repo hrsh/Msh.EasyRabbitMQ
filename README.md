@@ -2,6 +2,8 @@
 
 a fast and lightweight library to work with RabbitMQ
 
+[![.NET](https://github.com/hrsh/Msh.EasyRabbitMQ/actions/workflows/dotnet.yml/badge.svg)](https://github.com/hrsh/Msh.EasyRabbitMQ/actions/workflows/dotnet.yml)
+
 Install
 
 `Install-Package EasyRabbitMQ`
