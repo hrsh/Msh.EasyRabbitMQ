@@ -40,6 +40,8 @@ namespace Msh.EasyRabbitMQ.ServiceBus
 
             var basicProperties = channel.CreateBasicProperties();
             basicProperties.Persistent = _options.PublishOptions.Persistent;
+            basicProperties.ReplyTo = "";
+            basicProperties.CorrelationId = "";
 
             channel.BasicPublish(
                 exchange: "",
