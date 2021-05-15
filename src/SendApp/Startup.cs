@@ -26,6 +26,8 @@ namespace SendApp
             });
             services.AddEasyRabbitMq();
             services.AddControllers();
+
+            services.AddHostedService<TaskRunner>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -16,6 +16,7 @@ namespace Msh.EasyRabbitMQ.ServiceBus
             services.AddSingleton<IConnectionManager, ConnectionManager>();
             services.AddSingleton<IPublishManager, PublishManager>();
             services.AddSingleton<ISubscribeManager, SubscribeManager>();
+            services.AddSingleton<IRpcManager, RpcManager>();
 
             return services;
         }
