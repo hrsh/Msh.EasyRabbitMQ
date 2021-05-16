@@ -20,7 +20,9 @@ using Msh.EasyRabbitMQ.ServiceBus;
 public void ConfigureServices(IServiceCollection services)
 {
     ...
-    services.AddEasyRabbitMq();
+    services.AddEasyRabbitMq()
+        .AddEasyRabbitMqPublisher()
+        .AddEasyRabbitMqSubscriber();
     ...
 }
 ```
