@@ -1,4 +1,5 @@
-﻿using Msh.EasyRabbitMQ.ServiceBus;
+﻿using Msh.EasyRabbitMQ.ServiceBus.ServiceBusOptions;
+using Msh.EasyRabbitMQ.ServiceBus.ServiceBusPublisher;
 using RabbitMQ.Client;
 
 namespace Msh.EasyRabbitMQ.Extensions

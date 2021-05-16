@@ -1,7 +1,7 @@
 ﻿using RabbitMQ.Client;
 using System;
 
-namespace Msh.EasyRabbitMQ.ServiceBus
+namespace Msh.EasyRabbitMQ.ServiceBus.ServiceBusConnection
 {
     public interface IConnectionManager : IDisposable
     {

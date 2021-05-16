@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Msh.EasyRabbitMQ.ServiceBus;
+using Msh.EasyRabbitMQ.ServiceBus.ServiceBusSubscriber;
 using System;
 using System.Threading;
 using System.Threading.Tasks;

@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
+using Msh.EasyRabbitMQ.ServiceBus.ServiceBusConnection;
+using Msh.EasyRabbitMQ.ServiceBus.ServiceBusOptions;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;

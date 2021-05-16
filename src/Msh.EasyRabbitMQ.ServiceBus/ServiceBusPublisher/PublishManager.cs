@@ -1,11 +1,13 @@
 ﻿using Microsoft.Extensions.Options;
+using Msh.EasyRabbitMQ.ServiceBus.ServiceBusConnection;
+using Msh.EasyRabbitMQ.ServiceBus.ServiceBusOptions;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Msh.EasyRabbitMQ.ServiceBus
+namespace Msh.EasyRabbitMQ.ServiceBus.ServiceBusPublisher
 {
     public class PublishManager : IPublishManager
     {
@@ -21,7 +23,7 @@ namespace Msh.EasyRabbitMQ.ServiceBus
         }
 
         public void PublishUsingQueue(
-            string message,
+            string payload,
             string queue = null,
             Dictionary<string, object> arguments = null)
         {
@@ -36,7 +38,7 @@ namespace Msh.EasyRabbitMQ.ServiceBus
                 autoDelete: false,
                 arguments: arguments);
 
-            var body = Encoding.UTF8.GetBytes(message);
+            var body = Encoding.UTF8.GetBytes(payload);
 
             var basicProperties = channel.CreateBasicProperties();
             basicProperties.Persistent = _options.PublishOptions.Persistent;
@@ -53,11 +55,11 @@ namespace Msh.EasyRabbitMQ.ServiceBus
             string queue = null,
             Dictionary<string, object> arguments = null)
         {
-            var message = JsonConvert.SerializeObject(source, Formatting.None, new JsonSerializerSettings
+            var payload = JsonConvert.SerializeObject(source, Formatting.None, new JsonSerializerSettings
             {
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             });
-            PublishUsingQueue(message, queue, arguments);
+            PublishUsingQueue(payload, queue, arguments);
         }
 
         public void PublishUsingQueue<T>(
@@ -66,14 +68,14 @@ namespace Msh.EasyRabbitMQ.ServiceBus
             string queue = null,
             Dictionary<string, object> arguments = null)
         {
-            var message = JsonConvert.SerializeObject(
-                source, Formatting.None, 
+            var payload = JsonConvert.SerializeObject(
+                source, Formatting.None,
                 jsonSerializerSettings);
-            PublishUsingQueue(message, queue, arguments);
+            PublishUsingQueue(payload, queue, arguments);
         }
 
         public void PublishUsingTaskQueue(
-            string message,
+            string payload,
             string queue = null,
             Dictionary<string, object> arguments = null)
         {
@@ -88,7 +90,7 @@ namespace Msh.EasyRabbitMQ.ServiceBus
                 autoDelete: false,
                 arguments: arguments);
 
-            var body = Encoding.UTF8.GetBytes(message);
+            var body = Encoding.UTF8.GetBytes(payload);
 
             var properties = channel.CreateBasicProperties();
             properties.Persistent = _options.PublishOptions.Persistent;
@@ -105,12 +107,12 @@ namespace Msh.EasyRabbitMQ.ServiceBus
             string queue = null,
             Dictionary<string, object> arguments = null)
         {
-            var message = JsonConvert.SerializeObject(source);
-            PublishUsingTaskQueue(message, queue, arguments);
+            var payload = JsonConvert.SerializeObject(source);
+            PublishUsingTaskQueue(payload, queue, arguments);
         }
 
         public void PublishUsingExchange(
-            string message,
+            string payload,
             string exchange = null,
             string routingKey = null,
             string exchangeType = null,
@@ -125,7 +127,7 @@ namespace Msh.EasyRabbitMQ.ServiceBus
                 type: ExchangeType.Topic ?? _options.PublishOptions.ExchangeType,
                 arguments: arguments);
 
-            var body = Encoding.UTF8.GetBytes(message);
+            var body = Encoding.UTF8.GetBytes(payload);
 
             var basicProperties = channel.CreateBasicProperties();
             basicProperties.Persistent = _options.PublishOptions.Persistent;
@@ -136,7 +138,7 @@ namespace Msh.EasyRabbitMQ.ServiceBus
                 basicProperties: basicProperties,
                 body: body);
 #if DEBUG
-            Console.WriteLine("Sent {0}", message);
+            Console.WriteLine("Sent {0}", payload);
 #endif
         }
 
@@ -147,12 +149,12 @@ namespace Msh.EasyRabbitMQ.ServiceBus
             string exchangeType = null,
             IDictionary<string, object> arguments = null)
         {
-            var message = JsonConvert.SerializeObject(source);
-            PublishUsingExchange(message, exchange, routingKey, exchangeType, arguments);
+            var payload = JsonConvert.SerializeObject(source);
+            PublishUsingExchange(payload, exchange, routingKey, exchangeType, arguments);
         }
 
         public void PublishUsingExchange(
-            string message,
+            string payload,
             Action<PublishOptions> options,
             IDictionary<string, object> arguments = null)
         {
@@ -166,7 +168,7 @@ namespace Msh.EasyRabbitMQ.ServiceBus
                 type: publishOptions.ExchangeType,
                 arguments: arguments);
 
-            var body = Encoding.UTF8.GetBytes(message);
+            var body = Encoding.UTF8.GetBytes(payload);
 
             var basicProperties = channel.CreateBasicProperties();
             basicProperties.Persistent = publishOptions.Persistent;
@@ -177,7 +179,7 @@ namespace Msh.EasyRabbitMQ.ServiceBus
                 basicProperties: basicProperties,
                 body: body);
 #if DEBUG
-            Console.WriteLine("Sent {0}", message);
+            Console.WriteLine("Sent {0}", payload);
 #endif
         }
 
@@ -186,8 +188,8 @@ namespace Msh.EasyRabbitMQ.ServiceBus
             Action<PublishOptions> options,
             IDictionary<string, object> arguments = null)
         {
-            var message = JsonConvert.SerializeObject(source);
-            PublishUsingExchange(message, options, arguments);
+            var payload = JsonConvert.SerializeObject(source);
+            PublishUsingExchange(payload, options, arguments);
         }
     }
 }

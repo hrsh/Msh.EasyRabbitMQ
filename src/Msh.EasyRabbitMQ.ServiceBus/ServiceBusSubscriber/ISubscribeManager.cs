@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Msh.EasyRabbitMQ.ServiceBus.ServiceBusOptions;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Msh.EasyRabbitMQ.ServiceBus
+namespace Msh.EasyRabbitMQ.ServiceBus.ServiceBusSubscriber
 {
     public interface ISubscribeManager
     {

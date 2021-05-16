@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Msh.EasyRabbitMQ.Extensions;
 using Msh.EasyRabbitMQ.ServiceBus;
+using Msh.EasyRabbitMQ.ServiceBus.ServiceBusPublisher;
 
 namespace SendApp.Controllers
 {

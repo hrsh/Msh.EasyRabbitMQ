@@ -1,4 +1,4 @@
-﻿namespace Msh.EasyRabbitMQ.ServiceBus
+﻿namespace Msh.EasyRabbitMQ.ServiceBus.ServiceBusOptions
 {
     public class RabbitMqOptions
     {

@@ -1,26 +1,27 @@
-﻿using Newtonsoft.Json;
+﻿using Msh.EasyRabbitMQ.ServiceBus.ServiceBusOptions;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
-namespace Msh.EasyRabbitMQ.ServiceBus
+namespace Msh.EasyRabbitMQ.ServiceBus.ServiceBusPublisher
 {
     public interface IPublishManager
     {
         /// <summary>
-        /// Publish a single message to the queue.
+        /// Publish a single payload to the queue.
         /// </summary>
-        /// <param name="message">Message to publish</param>
+        /// <param name="payload">payload to publish</param>
         /// <param name="queue">Target queue, if null, publisher uses queue name from option</param>
         /// <param name="arguments">Additional arguments</param>
         void PublishUsingQueue(
-            string message,
+            string payload,
             string queue = null,
             Dictionary<string, object> arguments = null);
 
         /// <summary>
-        /// Publish a single message to the queue. This overload uses a type as message. Also, 
+        /// Publish a single payload to the queue. This overload uses a type as payload. Also, 
         /// this method uses <see cref="Newtonsoft.Json" /> for serialization, hence, 
-        /// <see cref="Newtonsoft.Json.ReferenceLoopHandling"/> will ignore.
+        /// <see cref="ReferenceLoopHandling"/> will ignore.
         /// </summary>
         /// <typeparam name="T">The type of object to be sent</typeparam>
         /// <param name="source">An instance of object to be sent</param>
@@ -32,13 +33,13 @@ namespace Msh.EasyRabbitMQ.ServiceBus
             Dictionary<string, object> arguments = null);
 
         /// <summary>
-        /// Publish a single message to the queue. This overload uses a type as message. Also, 
+        /// Publish a single payload to the queue. This overload uses a type as payload. Also, 
         /// this method uses <see cref="Newtonsoft.Json" /> for serialization, hence, 
-        /// <see cref="Newtonsoft.Json.ReferenceLoopHandling"/> will ignore.
+        /// <see cref="ReferenceLoopHandling"/> will ignore.
         /// </summary>
         /// <typeparam name="T">The type of object to be sent</typeparam>
         /// <param name="source">An instance of object to be sent</param>
-        /// <param name="jsonSerializerSettings">Custom <see cref="Newtonsoft.Json.ReferenceLoopHandling"/></param>
+        /// <param name="jsonSerializerSettings">Custom <see cref="ReferenceLoopHandling"/></param>
         /// <param name="queue">Target queue, if null, publisher uses queue name from option</param>
         /// <param name="arguments">Additional arguments</param>
         void PublishUsingQueue<T>(
@@ -48,7 +49,7 @@ namespace Msh.EasyRabbitMQ.ServiceBus
             Dictionary<string, object> arguments = null);
 
         void PublishUsingTaskQueue(
-            string message,
+            string payload,
             string queue = null,
             Dictionary<string, object> arguments = null);
 
@@ -58,7 +59,7 @@ namespace Msh.EasyRabbitMQ.ServiceBus
             Dictionary<string, object> arguments = null);
 
         void PublishUsingExchange(
-            string message,
+            string payload,
             string exchange = null,
             string routingKey = null,
             string exchangeType = null,
@@ -72,7 +73,7 @@ namespace Msh.EasyRabbitMQ.ServiceBus
             IDictionary<string, object> arguments = null);
 
         void PublishUsingExchange(
-            string message,
+            string payload,
             Action<PublishOptions> options,
             IDictionary<string, object> arguments = null);
 

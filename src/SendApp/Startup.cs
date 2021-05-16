@@ -24,7 +24,7 @@ namespace SendApp
                     Version = "v1"
                 });
             });
-            services.AddEasyRabbitMq();
+            services.AddEasyRabbitMq().AddEasyRabbitMqPublisher().AddEasyRabbitMqSubscriber();
             services.AddControllers();
 
             services.AddHostedService<TaskRunner>();

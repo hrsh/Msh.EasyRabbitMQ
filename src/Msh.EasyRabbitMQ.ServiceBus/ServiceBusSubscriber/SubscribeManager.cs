@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Msh.EasyRabbitMQ.ServiceBus.ServiceBusConnection;
+using Msh.EasyRabbitMQ.ServiceBus.ServiceBusOptions;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
@@ -7,7 +9,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Msh.EasyRabbitMQ.ServiceBus
+namespace Msh.EasyRabbitMQ.ServiceBus.ServiceBusSubscriber
 {
     public class SubscribeManager : ISubscribeManager
     {

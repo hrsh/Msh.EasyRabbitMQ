@@ -11,7 +11,7 @@ namespace ReceiveApp
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddEasyRabbitMq();
+            services.AddEasyRabbitMq().AddEasyRabbitMqPublisher().AddEasyRabbitMqSubscriber();
             services.AddHostedService<TaskRunner>();
         }
 

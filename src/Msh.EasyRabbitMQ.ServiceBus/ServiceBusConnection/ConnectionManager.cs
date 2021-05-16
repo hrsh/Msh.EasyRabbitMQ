@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Msh.EasyRabbitMQ.ServiceBus.ServiceBusOptions;
 using Polly;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
@@ -8,7 +9,7 @@ using System;
 using System.Net.Sockets;
 
 //https://github.com/dotnet-architecture/eShopOnContainers/blob/dev/src/BuildingBlocks/EventBus/EventBusRabbitMQ/EventBusRabbitMQ.cs
-namespace Msh.EasyRabbitMQ.ServiceBus
+namespace Msh.EasyRabbitMQ.ServiceBus.ServiceBusConnection
 {
     public class ConnectionManager : IConnectionManager
     {
